@@ -13,7 +13,11 @@ public class App
     public static void main(String[] args) throws IllegalArgumentException, IOException, URISyntaxException
     {
         String protocol = "http://";
-        String port = ":"+String.valueOf(System.getenv("PORT"))+"/";
+        String port_value = "5700";
+        if (String.valueOf(System.getenv("PORT")) != "null"){
+            port_value=String.valueOf(System.getenv("PORT");
+        }
+        String port = ":"+port_value+"/";
         String hostname = InetAddress.getLocalHost().getHostAddress();
         if (hostname.equals("127.0.0.1"))
         {
