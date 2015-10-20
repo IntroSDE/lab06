@@ -3,6 +3,7 @@ package introsde.rest.ehealth;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.InetAddress;
 
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -19,7 +20,7 @@ public class App
             hostname = "localhost";
         }
 
-        URI BASE_URI = new URI(protocol + hostname + port);
+        URI BASE_URI = new URI(protocol + hostname + port+"sdelab/");
 
     	System.out.println("Starting sdelab standalone HTTP server...");
         JdkHttpServerFactory.createHttpServer(BASE_URI, createApp());
