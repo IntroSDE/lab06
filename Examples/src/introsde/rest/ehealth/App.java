@@ -9,9 +9,18 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 public class App
 {
-    private static final URI BASE_URI = URI.create("http://localhost:5900/sdelab/");	
     public static void main(String[] args) throws IllegalArgumentException, IOException, URISyntaxException
     {
+        String protocol = "http://";
+        String port = ":"+String.valueOf(System.getenv("PORT"))+"/";
+        String hostname = InetAddress.getLocalHost().getHostAddress();
+        if (hostname.equals("127.0.0.1"))
+        {
+            hostname = "localhost";
+        }
+
+        URI BASE_URI = new URI(protocol + hostname + port);
+
     	System.out.println("Starting sdelab standalone HTTP server...");
         JdkHttpServerFactory.createHttpServer(BASE_URI, createApp());
         System.out.println("Server started on " + BASE_URI + "\n[kill the process to exit]");
