@@ -5,3 +5,5 @@
 /build/
 /WebContent/WEB-INF/lib/
 /ivy/
+*/.DS_Store
+.DS_Store
