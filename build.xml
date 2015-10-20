@@ -107,7 +107,7 @@
 			</fileset>
 		</copy>
 	</target>
-	<target name="start" depends="compile" >
+	<target name="install" depends="compile" >
         <echo message="app start introsde.rest.ehealth.App in ${build.dir}" />
         <java classname="introsde.rest.ehealth.App" classpath="${build.dir}" fork="true">
             <arg value="$JAVA_OPTS  -cp" />
