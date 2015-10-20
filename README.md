@@ -321,7 +321,8 @@ heroku create --stack cedar --buildpack https://github.com/IntroSDE/heroku-build
 git push heroku master
 heroku open
 ```
-Add /sdelab/person in your browser to the application url
+Add /sdelab/person in your browser to the application url, e.g.:
+https://still-forest-6253.herokuapp.com/sdelab/person
 
 [1]: https://drive.google.com/open?id=0B7ShzcEnCJFNWENNN1RpYU9xeUk&authuser=0
 [2]: https://drive.google.com/open?id=0B7ShzcEnCJFNQ2FfR21FUUk1Y1E&authuser=0
