@@ -97,7 +97,7 @@
 		<echo message="catalog.xml has been deleted" />
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="install" depends="init">
 		<echo message="Compile target has been called" />
 		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path.id" includeAntRuntime="false">
 		</javac>
@@ -107,7 +107,7 @@
 			</fileset>
 		</copy>
 	</target>
-	<target name="install" depends="compile" >
+	<target name="start">
         <echo message="app start introsde.rest.ehealth.App in ${build.dir}" />
         <java classname="introsde.rest.ehealth.App" classpath="${build.dir}" fork="true">
             <arg value="$JAVA_OPTS  -cp" />
