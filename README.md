@@ -1,4 +1,4 @@
-# LAB05: CRUD RESTful Services (2)
+# LAB06: CRUD RESTful Services (2)
 
 **Introduction to Service Design and Engineering | University of Trento | [Webpage](https://sites.google.com/site/introsdeunitn/lab-sessions/lab-session-5 "Permalink to LAB06: CRUD RESTful Services (2)")**
 
@@ -79,7 +79,7 @@ Links: [PPT slides][1] | [PDF slides][2] | [Source code][3]
     }
     ```
 
-* Since **PersonColletionResource** is exactly that: a collection resource, we will nee another resource to represent the single, specific **Person**. Create this following the example below. Notice that this is a **Sub-Resource** (it has not path annotation). For this reason, the **uriInfo** and the **request** (available in the parent resource) are injected using the @Context annotation so that the Person resource can also access the body of the request or other data in the path: 
+* Since **PersonColletionResource** is exactly that: a collection resource, we will need another resource to represent the single, specific **Person**. Create this following the example below. Notice that this is a **Sub-Resource** (it has not path annotation). For this reason, the **uriInfo** and the **request** (available in the parent resource) are injected using the @Context annotation so that the Person resource can also access the body of the request or other data in the path: 
 
     ```java
     package introsde.rest.ehealth.resources;
