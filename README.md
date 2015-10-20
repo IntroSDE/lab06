@@ -1,19 +1,10 @@
 # LAB06: CRUD RESTful Services (2)
 
-**Introduction to Service Design and Engineering | University of Trento | [Webpage](https://sites.google.com/site/introsdeunitn/lab-sessions/lab-session-5 "Permalink to LAB06: CRUD RESTful Services (2)")**
-
-In its first installment, we have explored the principles behind the REST architectural style and how to create a simple read-only RESTful web service. In this module, we will deepen our understanding by implement a set of CRUD RESTful services for our Health Profile example.  
-
-## Slides &amp; Code
-
-Links: [PPT slides][1] | [PDF slides][2] | [Source code][3]
-
 ## Guiding Notes
+In the firtst part of the REST Services module, we revisited the principles behind the REST architectural style and went through some initial read-only examples of how to implement these services. In this module, we will extend those examples to have a complete CRUD API for our HealthProfile service Design
 
-* In the firtst part of the REST Services module, we revisited the principles behind the REST architectural style and went through some initial read-only examples of how to implement these services. In this module, we will extend those examples to have a complete CRUD API for our HealthProfile service Design
 
 ### CRUD RESTful Example: Setting up the project (10 min) 
-
 * Start by creating a Web Dynamic Project (as in the last session) in your local workspace, using the the name **sdelab06-local** 
 * When asked, mark the option "Generate Deployment Descriptor Stub" to create an initial version of the **web.xml** file
 * Integrate **Ivy** dependencies to your project as we learnt in the last module (copy the ivy for this module from the lab's repository **lab06/ivy.xml**, copy also the **lab06/build.xml**). You will also find a guide in this module's *Additional notes* section. 
@@ -21,7 +12,7 @@ Links: [PPT slides][1] | [PDF slides][2] | [Source code][3]
  * **introsde.rest.ehealth.dao** - will contain classes whose purpose will be to provide the underlying connection to the persistence layer (e.g., to the database) 
  * **introsde.rest.ehealth.model** - will include classes that represent our domain data model and map the content in our the persistence layer to objects that can be manipulated in Java
  * **introsde.rest.ehealth.resources** - will include the *resources* that are exposed throught the RESTful API, which can be seen as the controllers that receive requests and respond with a representation of the resources that are requested
-* In this module, we will start by creating our modules as simple POJOs with JAXB annotations. Then we will create a DAO to access the persistence layer (in this case, a singleton hashmap). After this we will implement our REST resources with Jersey. And finally, we will stitch altogether in a Jersey Application that will work as a standalone server. 
+* In this module, we will start by creating our modules as simple POJOs with JAXB annotations. Then we will create a DAO to access the persistence layer (in this case, a singleton hashmap). After this we will implement our REST resources with Jersey. And finally, we will stitch altogether in a Jersey Application that will work as a standalone server.
 
 ### CRUD RESTful Example (1): The Model (15 min)
 
@@ -323,35 +314,15 @@ Links: [PPT slides][1] | [PDF slides][2] | [Source code][3]
  * **Where should these services go?**
  * **What should I do if I don't want the health profile to be included in the person resource?** 
 
-## Additional notes
-
-### Installation of Eclipse WTP (Web Tools Platform)
-
-* **Eclipse WTP** provides tools for developing standard Java web applications and Java EE applications
-* To install, use **Help -> Install new software -> All Available Sites**
-* Search for **Web Tools Platform** in the list and install all what's inside that category for the latest version
-* In old versions of eclipse, there might be a category "Web, XML, Java EE Development and OSGi Enterprise Development". 
-* Existing projects can seize the possibilities of WTP by converting them into **Dynamic Web** Projects. This is done in Eclipse by going to **Project -> Properties -> Project Facets -> Enable "Dynamic Web Module"**.  
-
-### Configuration of the Tomcat Server in Eclipse 
-
-* Open the Servers view: **Window -> Show View -> Other -> Server -> Servers**
-* If no server is available, you will see the link *No servers are available. Click this link to create a new server...*. Click on it to create a one.
-* Follow the steps of the wizard making sure of the following:
-    * Select the version of Apache Tomcat you have installed (e.g., 7.0)
-    * "Tomcat installation directory" points to the home folder of tomcat in your machine (e.g., /opt/apache-tomcat-7.0.39)
-    * "JRE" points to the folder where you have installed the Java JDK (make sure is the JDK not just the JRE) 
-* Once created, double click on the server to open its configuration file. In this file, make sure the option **Use Tomcat installation (takes control of tomcat installation)** is enabled and **Deploy path** is **webapps**
-* Right click on the server and select **Start** to test everything works. You should see the standard welcome page of tomcat in http://localhost:8080/
-
-### Integrating IVY to a Web Project
-* To get you all what you need for this module, we will use **IVY**. The **ivy.xml** in the lab source code folder defines the list of libraries we need.   
-* **With ANT:** the **build.xml** contains targets to download the ivy.jar, the dependencies and then copy all these jars to the web project classpath (which will be the **WebContent/WEB-INF/lib** folder)
-* **With Eclipse:** to integrate IVY to Eclipse's classpath, right click on the ivy.xml file and select **Add Ivy Library**. 
- * In the window that follows, in order for ivy to work also when deploying the services into Tomcat from Eclipse, we will configure IVY to put jars  into the project's **WebContent/WEB-INF/lib** folder. 
- * Go to the **Claspath tab** and marke **Enable project specific settings**. 
- * On **Build the classpath with** enable the option **retrieved artifacts**
- * On **Retrieve Pattern** put **WebContent/WEB-INF/lib/[type]s-[artifact]-[revision].[ext]**
+### Deploy on Heroku
+```
+heroku login
+heroku create --stack cedar --buildpack https://github.com/IntroSDE/heroku-buildpack-ant.git
+git push heroku master
+heroku open
+```
+Add /sdelab/person in your browser to the application url, e.g.:
+https://still-forest-6253.herokuapp.com/sdelab/person
 
 [1]: https://drive.google.com/open?id=0B7ShzcEnCJFNWENNN1RpYU9xeUk&authuser=0
 [2]: https://drive.google.com/open?id=0B7ShzcEnCJFNQ2FfR21FUUk1Y1E&authuser=0
