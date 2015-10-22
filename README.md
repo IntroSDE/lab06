@@ -4,7 +4,7 @@
 In the firtst part of the REST Services module, we revisited the principles behind the REST architectural style and went through some initial read-only examples of how to implement these services. In this module, we will extend those examples to have a complete CRUD API for our HealthProfile service Design
 
 
-### CRUD RESTful Example: Setting up the project (10 min) 
+### Project structure (10 min) 
 * Start by creating a Web Dynamic Project (as in the last session) in your local workspace, using the the name **sdelab06-local** 
 * When asked, mark the option "Generate Deployment Descriptor Stub" to create an initial version of the **web.xml** file
 * Integrate **Ivy** dependencies to your project as we learnt in the last module (copy the ivy for this module from the lab's repository **lab06/ivy.xml**, copy also the **lab06/build.xml**). You will also find a guide in this module's *Additional notes* section. 
@@ -14,12 +14,12 @@ In the firtst part of the REST Services module, we revisited the principles behi
  * **introsde.rest.ehealth.resources** - will include the *resources* that are exposed throught the RESTful API, which can be seen as the controllers that receive requests and respond with a representation of the resources that are requested
 * In this module, we will start by creating our modules as simple POJOs with JAXB annotations. Then we will create a DAO to access the persistence layer (in this case, a singleton hashmap). After this we will implement our REST resources with Jersey. And finally, we will stitch altogether in a Jersey Application that will work as a standalone server.
 
-### CRUD RESTful Example (1): The Model (15 min)
+### Models (15 min)
 
 * **Models** classes define our domain data model to which the data in our persistence layer will be mapped. We will reuse the model we created in the module 4, so go ahead and copy both **Person.java** and **HealthProfile.java** from **lab06/Example/src/introsde/rest/ehealth/model**. 
 * JAXB annotations will allow Jersey to automatically find the way of marshalling and unmarshalling these objects to xml (or JSON). 
 
-### CRUD RESTful Example (2): The DAO (10 min) 
+### Data Access Objects (DAO) (10 min) 
 
 * **DAO** stands for *data access objects* and is where our data providers are. Modern REST frameworks include ORM (Object Relational Mapping) libraries to map the model into the persistence layer, passing through the basic primitives provide by the DAO classes (we will see about that in the next module) 
 * For this example, we will use a [Singleton design pattern][4] to implement a mock of a in memory database.
@@ -29,7 +29,7 @@ In the firtst part of the REST Services module, we revisited the principles behi
  * a **constructor** that creates a new HashMap and put some *Person* objects inside
  * a method to access the hashmap from other classes (e.g., getDataProvider())
 
-### CRUD RESTful Example (3): READ Resources (30 min) 
+### READ Resources (30 min) 
 
 * **Resources** implement our service endpoints. Let's start by defining a resource for the **Person Collection** on the path **/person**. 
 * Below is an starting version of the **PersonCollectionResource.java**. Add this to your **resource** package. 
@@ -139,7 +139,7 @@ In the firtst part of the REST Services module, we revisited the principles behi
         }
     ```
 
-### CRUD RESTful Example (3): Deploy the Services and test them (15 min) 
+### Deploy the Services and test them (15 min) 
 
 * As we learnt in the previous module, we can either deploy our services in a **Servlet Container** (e.g., Tomcat) or through an standalone **HTTP Server**. 
 * **The HTTP Server Way: ** different than our first example, we will now use the "Jersey" way for deploying through an HTTP server. 
@@ -214,7 +214,7 @@ In the firtst part of the REST Services module, we revisited the principles behi
 * Now, let's try it on Tomcat!. Run the project on a Server and then open the Postman app to make the same requests as before, only this time they will all be preceded by **sdelab06**. 
  
  
-### CRUD RESTful Example (4): Create, Update and Delete a Person (25 min) 
+### Create, Update and Delete a Person (25 min) 
  
 * Add the following method to the PersonCollectionResource (in the RESTful design, we are operating on the "collection" because we are adding a new item to it via a **POST /person**) 
 
