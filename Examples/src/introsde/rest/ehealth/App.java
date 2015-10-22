@@ -15,7 +15,7 @@ public class App
         String protocol = "http://";
         String port_value = "5700";
         if (String.valueOf(System.getenv("PORT")) != "null"){
-            port_value=String.valueOf(System.getenv("PORT");
+            port_value=String.valueOf(System.getenv("PORT"));
         }
         String port = ":"+port_value+"/";
         String hostname = InetAddress.getLocalHost().getHostAddress();
