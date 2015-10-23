@@ -12,7 +12,6 @@ public enum PersonDao {
 	private Map<Long, Person> contentProvider = new HashMap<Long, Person>();
 
 	private PersonDao() {
-
 		Person pallino = new Person();
 		pallino.setPersonId(new Long(1));
 		Person pallo = new Person(new Long(2), "Pinco","Pallo", "1987-8-23");

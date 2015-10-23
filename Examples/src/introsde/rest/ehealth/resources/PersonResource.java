@@ -47,7 +47,7 @@ public class PersonResource {
 			throw new RuntimeException("Get: Person with " + id + " not found");
 		return person;
 	}
-
+	/*
 	@PUT
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response putPerson(Person person) {
@@ -71,4 +71,5 @@ public class PersonResource {
 			throw new RuntimeException("Delete: Person with " + id
 					+ " not found");
 	}
+	*/
 }

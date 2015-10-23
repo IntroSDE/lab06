@@ -55,7 +55,7 @@ public class PersonCollectionResource {
 		int count = PersonDao.instance.getDataProvider().size();
 		return String.valueOf(count);
 	}
-
+	/*
 	@POST  
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON}) // will be called when content-type header set to xml
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -70,7 +70,7 @@ public class PersonCollectionResource {
 		PersonDao.instance.getDataProvider().put(newId, person);
 		return person;
 	}
-	
+	*/
 	// Defines that the next path parameter after the base url is
 	// treated as a parameter and passed to the PersonResources
 	// Allows to type http://localhost:5900/base_url/1
